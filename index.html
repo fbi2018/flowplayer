@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Flowplayer - Seu IPTV Futurista</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdn.jsdelivr.net/npm/clappr@latest/dist/clappr.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <h1>Flowplayer - Seu Portal de IPTV</h1>
+
+    <div id="player" style="width: 80%; height: 400px; margin: 30px auto;"></div>
+
+    <div class="input-container">
+      <input type="text" id="m3uInput" placeholder="Cole aqui a URL da lista M3U">
+      <button onclick="loadM3U()">Carregar</button>
+    </div>
+  </div>
+
+  <script>
+    let player = new Clappr.Player({
+      parentId: "#player",
+      source: "",
+      width: "100%",
+      height: "100%",
+      mute: false
+    });
+
+    function loadM3U() {
+      const m3uUrl = document.getElementById("m3uInput").value;
+      if (m3uUrl) {
+        player.load(m3uUrl);
+        player.play();
+      } else {
+        alert("Por favor, insira uma URL válida.");
+      }
+    }
+  </script>
+</body>
+</html>
